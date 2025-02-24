@@ -1,0 +1,28 @@
+{
+	"name": "datawragling",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "AzureSynapseAnalyticsTable1",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~>  AzureSynapseAnalyticsTable1",
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsTable1",
+						"type": "DatasetReference"
+					}
+				},
+				{
+					"name": "wrangleddataset",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  wrangleddataset",
+					"dataset": {
+						"referenceName": "wrangleddataset",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared AzureSynapseAnalyticsTable1 = let AdfDoc = Sql.Database(\"movies3synapse.sql.azuresynapse.net\", \"movies\", [CreateNavigationProperties = false]), InputTable = AdfDoc{[Schema=\"dbo\",Item=\"Ratings\"]}[Data] in InputTable;\r\nshared wrangleddataset = let AdfDoc = AzureStorage.DataLakeContents(\"https://datalakestoragecto.dfs.core.windows.net/cto-container/destination/MoviesDB.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"AzureSynapseAnalyticsTable1\" in Source;\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}
