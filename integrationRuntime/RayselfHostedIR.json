@@ -1,0 +1,7 @@
+{
+	"name": "RayselfHostedIR",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "selfhosted IR decription"
+	}
+}

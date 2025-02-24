@@ -1,0 +1,45 @@
+{
+	"name": "AzureSynapseAnalyticsTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSynapseAnalytics1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "PrimaryGenre",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AverageRatings",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "HighestRated",
+				"type": "varchar"
+			},
+			{
+				"name": "LowestRated",
+				"type": "varchar"
+			},
+			{
+				"name": "NumberOfMovies",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Ratings"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,9 @@
+{
+	"name": "ctoigniteADF123-dp-203",
+	"location": "westus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e4b44930-5602-4df2-b57f-18bcbc81d983",
+		"tenantId": "0457a5da-b3ea-4f6c-9530-94e39e3beac6"
+	}
+}
