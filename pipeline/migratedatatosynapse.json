@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "migratedatatosynapse",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copytoazurestoragegen2",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -61,11 +61,11 @@
 				]
 			},
 			{
-				"name": "Data flow1",
+				"name": "Data transformation",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "Copytoazurestoragegen2",
 						"dependencyConditions": [
 							"Succeeded"
 						]
